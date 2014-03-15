@@ -56,6 +56,12 @@
         for (NSDictionary *mDictionary in moviesArray) {
             Movie *movie = [[Movie alloc] init];
             movie.title = [mDictionary objectForKey:@"title"];
+            movie.synopsis = [mDictionary objectForKey:@"synopsis"];
+            NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
+            for(NSDictionary *castDictionary in castArray){
+                [movie addCastMember:[castDictionary objectForKey:@"name"]];
+            }
+//            NSLog(@"%@", [mDictionary objectForKey:@"abridged_cast"]);
             [self.movies addObject:movie];
         }
         
@@ -101,7 +107,9 @@
     
     Movie *movie = [self.movies objectAtIndex:indexPath.row];
     
-    cell.movieTitle.text = [NSString stringWithFormat:@"%@", movie.title ];
+    cell.movieTitle.text = movie.title;
+    cell.synopsis.text = movie.synopsis;
+    cell.abridgedCast.text = movie.cast;
     
     return cell;
 }
@@ -113,7 +121,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return 110.0;
 }
 
 @end

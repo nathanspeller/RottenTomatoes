@@ -10,4 +10,11 @@
 
 @interface Movie : NSObject
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *synopsis;
+@property (nonatomic, strong) NSMutableArray *abridgedCast;
+
+- (Movie *) init;
+- (void)addCastMember:(NSString *)castMember;
+- (NSString *)cast;
+
 @end

@@ -10,4 +10,17 @@
 
 @implementation Movie
 
+- (Movie *)init{
+    self.abridgedCast = [[NSMutableArray alloc] init];
+    return self;
+}
+
+- (void)addCastMember:(NSString *)castMember{
+    [self.abridgedCast addObject:castMember];
+}
+
+- (NSString *)cast{
+    return [self.abridgedCast componentsJoinedByString:@", "];
+}
+
 @end
