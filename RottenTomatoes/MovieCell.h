@@ -1,5 +1,5 @@
 //
-//  MovieDetailsViewController.h
+//  MovieCell.h
 //  RottenTomatoes
 //
 //  Created by Nathan Speller on 3/15/14.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Movie.h"
 
-@interface MovieDetailsViewController : UIViewController
-@property (nonatomic, strong) Movie *movie;
+@interface MovieCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *movieTitle;
+
 @end

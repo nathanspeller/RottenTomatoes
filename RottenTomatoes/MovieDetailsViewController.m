@@ -9,6 +9,7 @@
 #import "MovieDetailsViewController.h"
 
 @interface MovieDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *movieTitle;
 
 @end
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.movieTitle.text = self.movie.title;
 }
 
 - (void)didReceiveMemoryWarning

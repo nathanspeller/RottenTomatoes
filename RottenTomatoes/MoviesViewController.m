@@ -8,6 +8,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieDetailsViewController.h"
+#import "MovieCell.h"
 #import "Movie.h"
 
 @interface MoviesViewController ()
@@ -79,24 +80,40 @@
     return [self.movies count];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    static NSString *CellIdentifier = @"MovieCell";
+    
+    MovieCell *cell = (MovieCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MovieCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
     Movie *movie = [self.movies objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", movie.title ];
+    cell.movieTitle.text = [NSString stringWithFormat:@"%@", movie.title ];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
+    vc.movie = [self.movies objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
 }
 
 @end

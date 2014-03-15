@@ -24,6 +24,8 @@
 		7E1F039F18D24C020073D294 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F039E18D24C020073D294 /* Movie.m */; };
 		7E5E6D1618D4E20C0068F306 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */; };
 		7E5E6D1718D4E20C0068F306 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */; };
+		7E5E6D2318D4E7F10068F306 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E6D2118D4E7F10068F306 /* MovieCell.m */; };
+		7E5E6D2418D4E7F10068F306 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E6D2218D4E7F10068F306 /* MovieCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,9 @@
 		7E5E6D1318D4E20C0068F306 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
 		7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
 		7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
+		7E5E6D2018D4E7F10068F306 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		7E5E6D2118D4E7F10068F306 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		7E5E6D2218D4E7F10068F306 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +137,9 @@
 				7E5E6D1318D4E20C0068F306 /* MovieDetailsViewController.h */,
 				7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */,
 				7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */,
+				7E5E6D2018D4E7F10068F306 /* MovieCell.h */,
+				7E5E6D2118D4E7F10068F306 /* MovieCell.m */,
+				7E5E6D2218D4E7F10068F306 /* MovieCell.xib */,
 			);
 			path = RottenTomatoes;
 			sourceTree = "<group>";
@@ -244,6 +252,7 @@
 				7E1F037418D240F10073D294 /* InfoPlist.strings in Resources */,
 				7E1F039C18D2413A0073D294 /* MoviesViewController.xib in Resources */,
 				7E1F037C18D240F10073D294 /* Images.xcassets in Resources */,
+				7E5E6D2418D4E7F10068F306 /* MovieCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +273,7 @@
 			files = (
 				7E5E6D1618D4E20C0068F306 /* MovieDetailsViewController.m in Sources */,
 				7E1F039B18D2413A0073D294 /* MoviesViewController.m in Sources */,
+				7E5E6D2318D4E7F10068F306 /* MovieCell.m in Sources */,
 				7E1F037A18D240F10073D294 /* AppDelegate.m in Sources */,
 				7E1F039F18D24C020073D294 /* Movie.m in Sources */,
 				7E1F037618D240F10073D294 /* main.m in Sources */,
