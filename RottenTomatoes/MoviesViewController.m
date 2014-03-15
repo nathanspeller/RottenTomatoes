@@ -106,7 +106,7 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
     vc.movie = [self.movies objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
