@@ -7,6 +7,7 @@
 //
 
 #import "MoviesViewController.h"
+#import "MovieDetailsViewController.h"
 #import "Movie.h"
 
 @interface MoviesViewController ()
@@ -74,7 +75,7 @@
 
 #pragma mark - Table view methods
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.movies count];
 }
 
@@ -91,6 +92,11 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@", movie.title ];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MovieDetailsViewController *vc = [[MovieDetailsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -22,6 +22,8 @@
 		7E1F039B18D2413A0073D294 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F039918D2413A0073D294 /* MoviesViewController.m */; };
 		7E1F039C18D2413A0073D294 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E1F039A18D2413A0073D294 /* MoviesViewController.xib */; };
 		7E1F039F18D24C020073D294 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F039E18D24C020073D294 /* Movie.m */; };
+		7E5E6D1618D4E20C0068F306 /* MovieDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */; };
+		7E5E6D1718D4E20C0068F306 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		7E1F039A18D2413A0073D294 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
 		7E1F039D18D24C020073D294 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		7E1F039E18D24C020073D294 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		7E5E6D1318D4E20C0068F306 /* MovieDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailsViewController.h; sourceTree = "<group>"; };
+		7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailsViewController.m; sourceTree = "<group>"; };
+		7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,9 @@
 				7E1F039A18D2413A0073D294 /* MoviesViewController.xib */,
 				7E1F039D18D24C020073D294 /* Movie.h */,
 				7E1F039E18D24C020073D294 /* Movie.m */,
+				7E5E6D1318D4E20C0068F306 /* MovieDetailsViewController.h */,
+				7E5E6D1418D4E20C0068F306 /* MovieDetailsViewController.m */,
+				7E5E6D1518D4E20C0068F306 /* MovieDetailsViewController.xib */,
 			);
 			path = RottenTomatoes;
 			sourceTree = "<group>";
@@ -232,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5E6D1718D4E20C0068F306 /* MovieDetailsViewController.xib in Resources */,
 				7E1F037418D240F10073D294 /* InfoPlist.strings in Resources */,
 				7E1F039C18D2413A0073D294 /* MoviesViewController.xib in Resources */,
 				7E1F037C18D240F10073D294 /* Images.xcassets in Resources */,
@@ -253,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5E6D1618D4E20C0068F306 /* MovieDetailsViewController.m in Sources */,
 				7E1F039B18D2413A0073D294 /* MoviesViewController.m in Sources */,
 				7E1F037A18D240F10073D294 /* AppDelegate.m in Sources */,
 				7E1F039F18D24C020073D294 /* Movie.m in Sources */,
@@ -457,6 +467,7 @@
 				7E1F039418D240F10073D294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E1F039518D240F10073D294 /* Build configuration list for PBXNativeTarget "RottenTomatoesTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +476,7 @@
 				7E1F039718D240F10073D294 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
