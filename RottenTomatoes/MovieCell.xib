@@ -26,17 +26,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cast" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAa-RK-Jxw">
-                        <rect key="frame" x="83" y="84" width="217" height="21"/>
+                        <rect key="frame" x="83" y="80" width="217" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkN-Pu-gDl">
+                        <rect key="frame" x="30" y="10" width="45" height="91"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="abridgedCast" destination="xAa-RK-Jxw" id="0GJ-d3-noa"/>
                 <outlet property="movieTitle" destination="JKU-i1-SR7" id="fL5-hM-wYg"/>
                 <outlet property="synopsis" destination="nlN-NI-c9p" id="bD0-3c-aly"/>
+                <outlet property="thumbnail" destination="wkN-Pu-gDl" id="2LV-cR-vma"/>
             </connections>
         </tableViewCell>
     </objects>

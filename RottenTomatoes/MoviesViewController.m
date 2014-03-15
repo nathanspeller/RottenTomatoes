@@ -8,6 +8,7 @@
 
 #import "MoviesViewController.h"
 #import "MovieDetailsViewController.h"
+#import <UIImageView+AFNetworking.h>
 #import "MovieCell.h"
 #import "Movie.h"
 
@@ -35,6 +36,7 @@
     [super viewDidLoad];
     
     self.movies = [[NSMutableArray alloc] init];
+    self.title = @"Movies";
     
     [self fetchData];
     
@@ -49,6 +51,8 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//        NSLog(@"%@", object);
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         NSArray *moviesArray = [dataDictionary objectForKey:@"movies"];
@@ -57,11 +61,11 @@
             Movie *movie = [[Movie alloc] init];
             movie.title = [mDictionary objectForKey:@"title"];
             movie.synopsis = [mDictionary objectForKey:@"synopsis"];
+            movie.thumbnailURL = [NSURL URLWithString:mDictionary[@"posters"][@"thumbnail"]];
             NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
             for(NSDictionary *castDictionary in castArray){
                 [movie addCastMember:[castDictionary objectForKey:@"name"]];
             }
-//            NSLog(@"%@", [mDictionary objectForKey:@"abridged_cast"]);
             [self.movies addObject:movie];
         }
         
@@ -110,6 +114,8 @@
     cell.movieTitle.text = movie.title;
     cell.synopsis.text = movie.synopsis;
     cell.abridgedCast.text = movie.cast;
+    cell.thumbnail.frame = CGRectMake(15, 10, 61, 91);
+    [cell.thumbnail setImageWithURL:movie.thumbnailURL];
     
     return cell;
 }
