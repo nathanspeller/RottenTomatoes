@@ -114,8 +114,9 @@
     cell.movieTitle.text = movie.title;
     cell.synopsis.text = movie.synopsis;
     cell.abridgedCast.text = movie.cast;
-    cell.thumbnail.frame = CGRectMake(15, 10, 61, 91);
-    [cell.thumbnail setImageWithURL:movie.thumbnailURL];
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 61, 91)];
+    [img setImageWithURL:movie.thumbnailURL];
+    [cell addSubview:img];
     
     return cell;
 }
