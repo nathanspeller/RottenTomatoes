@@ -11,6 +11,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "MovieCell.h"
 #import "Movie.h"
+#import "MBProgressHUD.h"
 
 @interface MoviesViewController ()
 
@@ -38,7 +39,13 @@
     self.movies = [[NSMutableArray alloc] init];
     self.title = @"Movies";
     
-    [self fetchData];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [self fetchData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -51,8 +58,8 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//        NSLog(@"%@", object);
+        id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"%@", object);
         NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
         NSArray *moviesArray = [dataDictionary objectForKey:@"movies"];
@@ -61,7 +68,7 @@
             Movie *movie = [[Movie alloc] init];
             movie.title = [mDictionary objectForKey:@"title"];
             movie.synopsis = [mDictionary objectForKey:@"synopsis"];
-            movie.thumbnailURL = [NSURL URLWithString:mDictionary[@"posters"][@"thumbnail"]];
+            movie.thumbnailURL = [NSURL URLWithString:mDictionary[@"posters"][@"profile"]];
             NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
             for(NSDictionary *castDictionary in castArray){
                 [movie addCastMember:[castDictionary objectForKey:@"name"]];
@@ -114,7 +121,7 @@
     cell.movieTitle.text = movie.title;
     cell.synopsis.text = movie.synopsis;
     cell.abridgedCast.text = movie.cast;
-    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 61, 91)];
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 60, 90)];
     [img setImageWithURL:movie.thumbnailURL];
     [cell addSubview:img];
     
