@@ -28,7 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self.tableView reloadData];
     }
     return self;
 }
@@ -39,6 +38,8 @@
     
     self.movies = [[NSMutableArray alloc] init];
     self.title = @"Movies";
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -51,9 +52,6 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
-    
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -66,7 +64,6 @@
 {
     NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (connectionError) {
@@ -79,36 +76,18 @@
                                       kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop)
                                       };
-            [CRToastManager showNotificationWithOptions:options
-                                        completionBlock:^{
-//                                            NSLog(@"Completed");
-                                        }];
+            [CRToastManager showNotificationWithOptions:options completionBlock:^{}];
         } else {
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@", object);
+//            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//            NSLog(@"%@", object);
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
             NSArray *moviesArray = [dataDictionary objectForKey:@"movies"];
             
             for (NSDictionary *mDictionary in moviesArray) {
-                Movie *movie = [[Movie alloc] init];
-                movie.title = [mDictionary objectForKey:@"title"];
-                movie.synopsis = [mDictionary objectForKey:@"synopsis"];
-                movie.thumbnailURL = [NSURL URLWithString:mDictionary[@"posters"][@"profile"]];
-                movie.posterURL = [NSURL URLWithString:mDictionary[@"posters"][@"original"]];
-                movie.mpaaRating = [mDictionary objectForKey:@"mpaa_rating"];
-                movie.audienceScore = [mDictionary[@"ratings"][@"audience_score"] integerValue];
-                movie.criticsScore = [mDictionary[@"ratings"][@"critics_score"] integerValue];
-                NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
-                for(NSDictionary *castDictionary in castArray){
-                    [movie addCastMember:[castDictionary objectForKey:@"name"]];
-                }
+                Movie *movie = [[Movie alloc] initWithDictionary:mDictionary];
                 [self.movies addObject:movie];
             }
-            
             [self.tableView reloadData];
-            
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
     }];
 }
@@ -126,17 +105,14 @@
 
 #pragma mark - Table view methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.movies count];
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 
-
-
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.movies count];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

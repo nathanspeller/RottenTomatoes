@@ -18,8 +18,7 @@
 @property (nonatomic, assign) int audienceScore;
 @property (nonatomic, assign) int criticsScore;
 
-- (Movie *) init;
-- (void)addCastMember:(NSString *)castMember;
+- (Movie *)initWithDictionary:(NSDictionary *)mDictionary;
 - (NSString *)cast;
 
 @end

@@ -10,13 +10,22 @@
 
 @implementation Movie
 
-- (Movie *)init{
-    self.abridgedCast = [[NSMutableArray alloc] init];
+- (Movie *)initWithDictionary:(NSDictionary *)mDictionary{
+    self.abridgedCast  = [[NSMutableArray alloc] init];
+    self.title         = [mDictionary objectForKey:@"title"];
+    self.synopsis      = [mDictionary objectForKey:@"synopsis"];
+    self.mpaaRating    = [mDictionary objectForKey:@"mpaa_rating"];
+    self.audienceScore = [mDictionary[@"ratings"][@"audience_score"] integerValue];
+    self.criticsScore  = [mDictionary[@"ratings"][@"critics_score"] integerValue];
+    
+    self.thumbnailURL  = [NSURL URLWithString:mDictionary[@"posters"][@"profile"]];
+    self.posterURL     = [NSURL URLWithString:mDictionary[@"posters"][@"original"]];
+    
+    NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
+    for(NSDictionary *castDictionary in castArray){
+        [self.abridgedCast addObject:[castDictionary objectForKey:@"name"]];
+    }
     return self;
-}
-
-- (void)addCastMember:(NSString *)castMember{
-    [self.abridgedCast addObject:castMember];
 }
 
 - (NSString *)cast{
