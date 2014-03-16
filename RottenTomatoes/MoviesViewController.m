@@ -95,6 +95,7 @@
                 movie.title = [mDictionary objectForKey:@"title"];
                 movie.synopsis = [mDictionary objectForKey:@"synopsis"];
                 movie.thumbnailURL = [NSURL URLWithString:mDictionary[@"posters"][@"profile"]];
+                movie.posterURL = [NSURL URLWithString:mDictionary[@"posters"][@"original"]];
                 movie.mpaaRating = [mDictionary objectForKey:@"mpaa_rating"];
                 movie.audienceScore = [mDictionary[@"ratings"][@"audience_score"] integerValue];
                 movie.criticsScore = [mDictionary[@"ratings"][@"critics_score"] integerValue];
@@ -151,7 +152,8 @@
     Movie *movie = [self.movies objectAtIndex:indexPath.row];
     
     cell.movieTitle.text = movie.title;
-    cell.synopsis.text = [NSString stringWithFormat:@"%d", movie.audienceScore];
+    cell.criticsScore.text = [NSString stringWithFormat:@"%d", movie.criticsScore];
+    cell.audienceScore.text = [NSString stringWithFormat:@"%d", movie.audienceScore];
     cell.abridgedCast.text = movie.cast;
     UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 60, 90)];
     [img setImageWithURL:movie.thumbnailURL];
