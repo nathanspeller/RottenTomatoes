@@ -40,6 +40,10 @@
     self.title = @"Movies";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.24 green:0.24 blue:0.24 alpha:1.0]];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:0.12 green:0.12 blue:0.12 alpha:1.0]];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -57,6 +61,10 @@
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [self fetchData];
     [refreshControl endRefreshing];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 
@@ -82,7 +90,7 @@
 //            NSLog(@"%@", object);
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSArray *moviesArray = [dataDictionary objectForKey:@"movies"];
-            
+            [self.movies removeAllObjects];
             for (NSDictionary *mDictionary in moviesArray) {
                 Movie *movie = [[Movie alloc] initWithDictionary:mDictionary];
                 [self.movies addObject:movie];
@@ -128,12 +136,23 @@
     Movie *movie = [self.movies objectAtIndex:indexPath.row];
     
     cell.movieTitle.text = movie.title;
-    cell.criticsScore.text = [NSString stringWithFormat:@"%d", movie.criticsScore];
-    cell.audienceScore.text = [NSString stringWithFormat:@"%d", movie.audienceScore];
+    cell.criticsScore.text = [NSString stringWithFormat:@"%d%%", movie.criticsScore];
     cell.abridgedCast.text = movie.cast;
     UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 60, 90)];
     [img setImageWithURL:movie.thumbnailURL];
     [cell addSubview:img];
+    
+    cell.separatorInset = UIEdgeInsetsZero;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(89, 62, 215, 2)];
+    scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    [cell addSubview:scoreBarContainer];
+    
+    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(88, 62, (2.15*movie.criticsScore), 2)];
+    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.3 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
+    score.backgroundColor = barColor;
+    [cell addSubview:score];
     
     return cell;
 }
@@ -145,7 +164,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 110.0;
+    return 108.0;
 }
 
 @end

@@ -12,5 +12,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *criticsScore;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitle;
 @property (weak, nonatomic) IBOutlet UILabel *abridgedCast;
-@property (weak, nonatomic) IBOutlet UILabel *audienceScore;
 @end
