@@ -13,15 +13,29 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    MoviesViewController *vc = [[MoviesViewController alloc] init];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = navigationController;
+    MoviesViewController *boxOfficeViewController = [[MoviesViewController alloc] init];
+    boxOfficeViewController.title = @"Box Office";
+    boxOfficeViewController.boxOfficeSource = YES;
+    MoviesViewController *dvdViewController = [[MoviesViewController alloc] init];
+    dvdViewController.title = @"DVD";
+    dvdViewController.boxOfficeSource = NO;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:boxOfficeViewController];
+    UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:dvdViewController];
+    
+    tabBarController.viewControllers = @[navigationController, secondNavigationController];
+    tabBarController.tabBar.barTintColor = [UIColor colorWithRed:0.06 green:0.06 blue:0.06 alpha:1.0];
+    tabBarController.tabBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
+    
+    self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     return YES;
 }
 

@@ -37,13 +37,12 @@
     [super viewDidLoad];
     
     self.movies = [[NSMutableArray alloc] init];
-    self.title = @"Movies";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor blackColor]];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.06 green:0.06 blue:0.06 alpha:1.0];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -71,7 +70,7 @@
 
 - (void)fetchData
 {
-    NSString *url = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
+    NSString *url = self.boxOfficeSource ? @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=g9au4hv6khv6wzvzgt55gpqs" : @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=g9au4hv6khv6wzvzgt55gpqs";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {

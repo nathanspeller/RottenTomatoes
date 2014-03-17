@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MoviesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, assign) BOOL boxOfficeSource;
 @end
