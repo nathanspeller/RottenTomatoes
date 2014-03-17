@@ -155,7 +155,7 @@
     [cell addSubview:scoreBarContainer];
     
     UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 58, (2.25*movie.criticsScore), 1)];
-    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.6 blue:0.1 alpha:1.0];
+    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.6 blue:0.3 alpha:1.0];
     score.backgroundColor = barColor;
     [cell addSubview:score];
     
