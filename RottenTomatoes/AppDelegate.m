@@ -26,11 +26,14 @@
     dvdViewController.boxOfficeSource = NO;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:boxOfficeViewController];
+    navigationController.tabBarItem.image = [UIImage imageNamed:@"ticket"];
     UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:dvdViewController];
+    secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"dvd"];
     
     tabBarController.viewControllers = @[navigationController, secondNavigationController];
     tabBarController.tabBar.barTintColor = [UIColor colorWithRed:0.06 green:0.06 blue:0.06 alpha:1.0];
     tabBarController.tabBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
+
     
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
