@@ -39,12 +39,15 @@
     self.movies = [[NSMutableArray alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    // styles
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor blackColor]];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
+    // show loading HUD
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         [self fetchData];
@@ -53,6 +56,7 @@
         });
     });
     
+    // pull-to-refresh
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
@@ -63,11 +67,6 @@
     [CRToastManager dismissNotification:YES];
     [refreshControl endRefreshing];
 }
-
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
-
 
 - (void)fetchData
 {
@@ -147,7 +146,6 @@
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
     cell.selectedBackgroundView = bgColorView;
-    
     
     return cell;
 }

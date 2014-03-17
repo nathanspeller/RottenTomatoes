@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
     self.movieTitle.text = self.movie.title;
     self.description.numberOfLines = 0;
     [self.description sizeToFit];
@@ -53,6 +53,7 @@
     [self.backgroundPoster setImageWithURL:self.movie.posterURL];
     self.backgroundPoster.contentMode = UIViewContentModeScaleAspectFit;
 
+    // Dark gradient background for text
     CAGradientLayer *l = [CAGradientLayer layer];
     l.frame = self.textContainerView.bounds;
     l.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.75].CGColor, nil];

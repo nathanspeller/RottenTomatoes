@@ -21,12 +21,14 @@
     MoviesViewController *boxOfficeViewController = [[MoviesViewController alloc] init];
     boxOfficeViewController.title = @"Box Office";
     boxOfficeViewController.boxOfficeSource = YES;
+    
     MoviesViewController *dvdViewController = [[MoviesViewController alloc] init];
     dvdViewController.title = @"DVD";
     dvdViewController.boxOfficeSource = NO;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:boxOfficeViewController];
     navigationController.tabBarItem.image = [UIImage imageNamed:@"ticket"];
+    
     UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:dvdViewController];
     secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"dvd"];
     
@@ -34,10 +36,8 @@
     tabBarController.tabBar.barTintColor = [UIColor blackColor];
     tabBarController.tabBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
 
-    
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
-    
 
     return YES;
 }
