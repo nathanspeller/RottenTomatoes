@@ -140,18 +140,18 @@
     cell.criticsScore.text = [NSString stringWithFormat:@"%d%%", movie.criticsScore];
     cell.abridgedCast.text = movie.cast;
     cell.rating.text = movie.mpaaRating;
-    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 60, 90)];
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 9, 60, 90)];
     [img setImageWithURL:movie.thumbnailURL];
     [cell addSubview:img];
     
     cell.separatorInset = UIEdgeInsetsZero;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(89, 66, 215, 2)];
+    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(89, 66, 215, 1)];
     scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     [cell addSubview:scoreBarContainer];
     
-    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(88, 66, (2.15*movie.criticsScore), 2)];
+    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(89, 66, (2.15*movie.criticsScore), 1)];
     UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.3 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
     score.backgroundColor = barColor;
     [cell addSubview:score];
@@ -166,7 +166,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 108.0;
+    return 110.0;
 }
 
 @end
