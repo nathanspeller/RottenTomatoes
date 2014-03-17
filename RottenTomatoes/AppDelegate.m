@@ -31,7 +31,7 @@
     secondNavigationController.tabBarItem.image = [UIImage imageNamed:@"dvd"];
     
     tabBarController.viewControllers = @[navigationController, secondNavigationController];
-    tabBarController.tabBar.barTintColor = [UIColor colorWithRed:0.06 green:0.06 blue:0.06 alpha:1.0];
+    tabBarController.tabBar.barTintColor = [UIColor blackColor];
     tabBarController.tabBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
 
     

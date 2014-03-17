@@ -42,7 +42,7 @@
     [self.tableView setSeparatorColor:[UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor blackColor]];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.06 green:0.06 blue:0.06 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -87,8 +87,6 @@
                                       };
             [CRToastManager showNotificationWithOptions:options completionBlock:^{}];
         } else {
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@", object);
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             NSArray *moviesArray = [dataDictionary objectForKey:@"movies"];
             [self.movies removeAllObjects];
@@ -150,11 +148,11 @@
     bgColorView.backgroundColor = [UIColor colorWithRed:0.1 green:0.10 blue:0.1 alpha:1.0];
     cell.selectedBackgroundView = bgColorView;
     
-    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(79, 58, 225, 1)];
+    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(79, 57, 225, 3)];
     scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     [cell addSubview:scoreBarContainer];
     
-    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 58, (2.25*movie.criticsScore), 1)];
+    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 57, (2.25*movie.criticsScore), 3)];
     UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.6 blue:0.3 alpha:1.0];
     score.backgroundColor = barColor;
     [cell addSubview:score];
