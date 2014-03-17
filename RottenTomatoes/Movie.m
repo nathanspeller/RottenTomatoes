@@ -21,6 +21,7 @@
     
     self.thumbnailURL  = [NSURL URLWithString:mDictionary[@"posters"][@"profile"]];
     self.posterURL     = [NSURL URLWithString:mDictionary[@"posters"][@"original"]];
+    self.posterLowResURL = [NSURL URLWithString:mDictionary[@"posters"][@"detailed"]];
     
     NSArray *castArray = [mDictionary objectForKey:@"abridged_cast"];
     for(NSDictionary *castDictionary in castArray){

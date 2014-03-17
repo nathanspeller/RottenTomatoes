@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *runtime;
 @property (nonatomic, strong) NSURL *thumbnailURL;
 @property (nonatomic, strong) NSURL *posterURL;
+@property (nonatomic, strong) NSURL *posterLowResURL;
 @property (nonatomic, strong) NSMutableArray *abridgedCast;
 @property (nonatomic, strong) NSString *mpaaRating;
 @property (nonatomic, assign) int audienceScore;

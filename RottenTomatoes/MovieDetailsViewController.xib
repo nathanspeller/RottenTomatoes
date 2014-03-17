@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsViewController">
             <connections>
                 <outlet property="backgroundPoster" destination="6Dr-QF-KjY" id="kSz-eh-qFE"/>
+                <outlet property="backgroundPosterLowRes" destination="9hv-om-uxP" id="7jf-XY-gKw"/>
                 <outlet property="description" destination="zlm-9l-0hT" id="q2I-Jp-68i"/>
                 <outlet property="movieCast" destination="OYq-8R-FCR" id="jaR-Sn-0j7"/>
                 <outlet property="movieTitle" destination="Ve1-Dk-Zec" id="HSJ-IN-HfK"/>
@@ -28,6 +29,10 @@
                     <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hv-om-uxP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-QF-KjY">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

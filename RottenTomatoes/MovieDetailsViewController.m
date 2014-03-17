@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 
 @interface MovieDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundPosterLowRes;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPoster;
 @property (weak, nonatomic) IBOutlet UIView *textContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitle;
@@ -43,8 +44,15 @@
     self.rating.text = [NSString stringWithFormat:@"%@  %@ min.", self.movie.mpaaRating, self.movie.runtime];
     self.score.text = [NSString stringWithFormat:@"%d%%", self.movie.criticsScore];
     self.movieCast.text = self.movie.cast;
+    
+    // First load low res poster
+    [self.backgroundPosterLowRes setImageWithURL:self.movie.posterLowResURL];
+    self.backgroundPosterLowRes.contentMode = UIViewContentModeScaleAspectFit;
+    
+    // Then load the hi res poster
     [self.backgroundPoster setImageWithURL:self.movie.posterURL];
     self.backgroundPoster.contentMode = UIViewContentModeScaleAspectFit;
+
     CAGradientLayer *l = [CAGradientLayer layer];
     l.frame = self.textContainerView.bounds;
     l.colors = [NSArray arrayWithObjects:(id)[UIColor blackColor].CGColor, (id)[UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:0.75].CGColor, nil];
