@@ -39,7 +39,7 @@
     self.movies = [[NSMutableArray alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1.0]];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0]];
     [self.tableView setBackgroundColor:[UIColor blackColor]];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:1.000 green:0.800 blue:0.400 alpha:1.000];
     self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
@@ -137,25 +137,17 @@
     cell.movieTitle.text = movie.title;
     cell.criticsScore.text = [NSString stringWithFormat:@"%d%%", movie.criticsScore];
     cell.abridgedCast.text = movie.cast;
-    cell.rating.text = movie.mpaaRating;
-    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(15, 9, 50, 75)];
+    cell.rating.text = [NSString stringWithFormat:@"%@  %@ min.", movie.mpaaRating, movie.runtime];
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(13, 7, 60, 90)];
     [img setImageWithURL:movie.thumbnailURL];
     [cell addSubview:img];
     
     cell.separatorInset = UIEdgeInsetsZero;
     
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor colorWithRed:0.1 green:0.10 blue:0.1 alpha:1.0];
+    bgColorView.backgroundColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
     cell.selectedBackgroundView = bgColorView;
     
-    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(79, 57, 225, 3)];
-    scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    [cell addSubview:scoreBarContainer];
-    
-    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 57, (2.25*movie.criticsScore), 3)];
-    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.6 blue:0.3 alpha:1.0];
-    score.backgroundColor = barColor;
-    [cell addSubview:score];
     
     return cell;
 }
@@ -173,7 +165,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 95.0;
+    return 104.0;
 }
 
 @end
