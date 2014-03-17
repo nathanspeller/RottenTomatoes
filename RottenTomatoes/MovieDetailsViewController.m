@@ -36,7 +36,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.movieTitle.text = self.movie.title;
+    self.description.numberOfLines = 0;
+    [self.description sizeToFit];
     self.description.text = self.movie.synopsis;
+
     self.rating.text = [NSString stringWithFormat:@"%@  %@ min.", self.movie.mpaaRating, self.movie.runtime];
     self.score.text = [NSString stringWithFormat:@"%d%%", self.movie.criticsScore];
     self.movieCast.text = self.movie.cast;
