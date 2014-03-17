@@ -145,7 +145,10 @@
     [cell addSubview:img];
     
     cell.separatorInset = UIEdgeInsetsZero;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:0.1 green:0.10 blue:0.1 alpha:1.0];
+    cell.selectedBackgroundView = bgColorView;
     
     UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(89, 66, 215, 1)];
     scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
@@ -157,6 +160,12 @@
     [cell addSubview:score];
     
     return cell;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
