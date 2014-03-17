@@ -11,6 +11,7 @@
 @interface Movie : NSObject
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *synopsis;
+@property (nonatomic, strong) NSString *runtime;
 @property (nonatomic, strong) NSURL *thumbnailURL;
 @property (nonatomic, strong) NSURL *posterURL;
 @property (nonatomic, strong) NSMutableArray *abridgedCast;

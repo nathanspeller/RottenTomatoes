@@ -15,6 +15,7 @@
     self.title         = [mDictionary objectForKey:@"title"];
     self.synopsis      = [mDictionary objectForKey:@"synopsis"];
     self.mpaaRating    = [mDictionary objectForKey:@"mpaa_rating"];
+    self.runtime       = [mDictionary objectForKey:@"runtime"];
     self.audienceScore = [mDictionary[@"ratings"][@"audience_score"] integerValue];
     self.criticsScore  = [mDictionary[@"ratings"][@"critics_score"] integerValue];
     
