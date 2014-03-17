@@ -60,6 +60,7 @@
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [self fetchData];
+    [CRToastManager dismissNotification:YES];
     [refreshControl endRefreshing];
 }
 
@@ -78,9 +79,9 @@
             NSDictionary *options = @{
                                       kCRToastTextKey : @"Network Error!",
                                       kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
-                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0],
-                                      kCRToastTimeIntervalKey : @10.0,
-                                      kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+                                      kCRToastBackgroundColorKey : [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0],
+                                      kCRToastTimeIntervalKey : @(DBL_MAX),
+                                      kCRToastNotificationTypeKey : @(CRToastTypeStatusBar),
                                       kCRToastAnimationInTypeKey : @(CRToastAnimationTypeGravity),
                                       kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop)
                                       };
@@ -149,12 +150,12 @@
     bgColorView.backgroundColor = [UIColor colorWithRed:0.1 green:0.10 blue:0.1 alpha:1.0];
     cell.selectedBackgroundView = bgColorView;
     
-    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(79, 57, 225, 1)];
+    UIView* scoreBarContainer = [[UIView alloc]initWithFrame:CGRectMake(79, 58, 225, 1)];
     scoreBarContainer.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     [cell addSubview:scoreBarContainer];
     
-    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 57, (2.25*movie.criticsScore), 1)];
-    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.3 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.5 blue:0.2 alpha:1.0];
+    UIView* score = [[UIView alloc]initWithFrame:CGRectMake(79, 58, (2.25*movie.criticsScore), 1)];
+    UIColor *barColor = (movie.criticsScore < 70) ? [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0] : [UIColor colorWithRed:0.3 green:0.6 blue:0.1 alpha:1.0];
     score.backgroundColor = barColor;
     [cell addSubview:score];
     
